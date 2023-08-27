@@ -1,5 +1,5 @@
-# 3m377's RVC Utilities 
-Latest README update: 2023-08-26
+# 3m377's RVC Utilities [![MIT License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://en.wikipedia.org/wiki/MIT_License) 
+Latest README update: 2023-08-27
 
 ## Introduction
 Here is a list of all of my utility scripts, designed to make life easier when installing and using RVC (Retrieval Based Voice Conversion). These are specifically designed for **Windows**, and they are only tested on **Windows 10**. If someone can test these scripts on other versions of Windows it would be greatly appreciated.
@@ -12,10 +12,10 @@ Here is a list of all of my utility scripts, designed to make life easier when i
 ## Instructions
 
 ### If you already have RVC installed
-- Place the [Model Downloader](https://huggingface.co/3m377/RVC-Utilities/resolve/main/downloadmodel.bat) script into the main RVC folder.
+- Place the [Model Downloader](https://cdn.discordapp.com/attachments/1045962672300109874/1145192195914203187/downloadmodel.bat) script into the main RVC folder.
 
 ### If you do not have RVC installed
-- Download the [Easy RVC Installer](https://huggingface.co/3m377/RVC-Utilities/resolve/main/easy-install-rvc.bat) script and place it into the folder where you want RVC to be installed.
+- Download the [Easy RVC Installer](https://cdn.discordapp.com/attachments/1045962672300109874/1145192196237180949/easy-install-rvc.bat) script and place it into the folder where you want RVC to be installed.
 - Run the script.
 - After a while, it will prompt you to copy the files in **Mangio-RVC-Fork** to the **RVC-Beta** folder. Please do so, and when it prompts you please click ***Replace all files in the destination***
 - There is no need to download the Model Downloader, it will automatically be downloaded and placed into the correct folder
