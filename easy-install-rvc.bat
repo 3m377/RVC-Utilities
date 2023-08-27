@@ -4,7 +4,7 @@ set GIT_SSH_COMMAND="ssh -i %USERPROFILE%.ssh\id_rsa"
 echo Downloading 7za.exe
 
 :: Download 7za.exe
-powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "(New-Object Net.WebClient).DownloadFile('https://huggingface.co/3m377/RVC-Utilities/resolve/main/7za.exe', '7za.exe')"
+powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/3m377/RVC-Utilities/raw/main/other/7za.exe', '7za.exe')"
 
 :: Download RVC-beta.7z
 echo Downloading RVC-beta.7z
@@ -26,10 +26,8 @@ echo Please move all files from the Mangio-RVC-Fork folder to the RVC-beta folde
 echo It will tell you "The destination has X files with the same names",
 echo Just click "Replace the files in the destination".
 echo DO NOT CLOSE THIS WINDOW, THE INSTALLATION WILL END IF YOU DO
-echo Once you're done copying all of the files, come back to this window.
+echo Once you're done copying all of the files, delete the Mangio-RVC-Fork folder and return to this window.
 pause
-
-rmdir Mangio-RVC-Fork
 
 :: Install python requirements
 cd RVC-beta
@@ -45,7 +43,11 @@ del easyGUI_local_installer.zip
 cd RVC-beta
 CALL install_easyGUI.bat
 
-powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "(New-Object Net.WebClient).DownloadFile('https://huggingface.co/3m377/RVC-Utilities/resolve/main/downloadmodel.bat', 'downloadmodel.bat')"
+:: Download downloadmodel.bat
+powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/3m377/RVC-Utilities/raw/main/downloadmodel.bat', 'downloadmodel.bat')"
+
+:: Download 7za.exe again
+powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/3m377/RVC-Utilities/raw/main/other/7za.exe', '7za.exe')"
 
 cd ..
 cd ..
