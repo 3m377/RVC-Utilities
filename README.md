@@ -1,4 +1,6 @@
-# 3m377's RVC Utilities [![MIT License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://en.wikipedia.org/wiki/MIT_License) 
+# 3m377's RVC Utilities
+[![MIT License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://en.wikipedia.org/wiki/MIT_License)
+
 Latest README update: 2023-08-27
 
 ## Introduction
