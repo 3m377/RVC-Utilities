@@ -1,8 +1,10 @@
 # 3m377's RVC Utilities 
+Latest README update: 2023-08-26
+
 ## Introduction
 Here is a list of all of my utility scripts, designed to make life easier when installing and using RVC (Retrieval Based Voice Conversion). These are specifically designed for **Windows**, and they are only tested on **Windows 10**. If someone can test these scripts on other versions of Windows it would be greatly appreciated.
 ## Downloads
-**These may not be up to date**
+**These may not be up to date, it depends on if I remember to update the README**
 
 - [Easy RVC Installer](https://cdn.discordapp.com/attachments/1045962672300109874/1145192196237180949/easy-install-rvc.bat) | This is a script designed to automate the RVC installation process as much as possible.
 
