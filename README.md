@@ -22,3 +22,4 @@ For support, feedback, or any other questions or concerns, please dm 3m377 on [D
 
 - [README Markdown Editor](https://readme.so/)
 - [AI HUB Discord server](https://discord.com/invite/aihub/)
+- [7-Zip](https://www.7-zip.org)
