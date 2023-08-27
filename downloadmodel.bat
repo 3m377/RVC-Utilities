@@ -20,13 +20,13 @@ echo The name of the model should be whatever there is at the end of the link.
 echo Example: https://huggingface.co/3m377/CASSIEsl/resolve/main/CASSIEv2.zip
 echo This model would be named "CASSIEv2", because the filename at the end of the link is "CASSIEv2.zip"
 set /p name=Input the name of your model: 
-powershell Expand-Archive download.zip -DestinationPath %name%-download
+powershell Expand-Archive download.zip -DestinationPath %name%-temporary
 del download.zip
 
-for /r "%name%-download" %%x in (*.pth) do ren "%%x" %name%.pth
-for /r "%name%-download" %%x in (*.pth) do move "%%x" "weights"
+for /r "%name%-temporary" %%x in (*.pth) do ren "%%x" %name%.pth
+for /r "%name%-temporary" %%x in (*.pth) do move "%%x" "weights"
 mkdir %name%
-for /r "%name%-download" %%x in (*.index) do move "%%x" "%name%"
+for /r "%name%-temporary" %%x in (*.index) do move "%%x" "%name%"
 move %name% logs
-rmdir %name%-download
+rmdir %name%-temporary
 pause
