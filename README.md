@@ -21,6 +21,8 @@ Here is a list of all of my utility scripts, designed to make life easier when i
 - Place the [Model Downloader](https://cdn.discordapp.com/attachments/1045962672300109874/1145192195914203187/downloadmodel.bat) script into the main RVC folder.
 
 ### If RVC is not yet installed
+- Make sure you have [Git](https://git-scm.com/downloads) installed. If you don't, the installation will not work.
+- Make sure you have [Python](https://www.python.org/downloads/) installed. RVC will not work if it isn't installed.
 - Download the [Easy RVC Installer](https://cdn.discordapp.com/attachments/1045962672300109874/1145192196237180949/easy-install-rvc.bat) script and place it in your desired RVC installation folder.
 - Run the script.
 - After some time, you'll be prompted to copy the files from **Mangio-RVC-Fork** to the **RVC-Beta** folder. Please follow the prompt and click ***Replace all files in the destination*** when requested.
