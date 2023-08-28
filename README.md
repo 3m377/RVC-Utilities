@@ -27,6 +27,8 @@ Here is a list of all of my utility scripts, designed to make life easier when i
 - Run the script.
 - After some time, you'll be prompted to copy the files from **Mangio-RVC-Fork** to the **RVC-Beta** folder. Please follow the prompt and click ***Replace all files in the destination*** when requested.
 - The Model Downloader will be automatically downloaded and placed in the appropriate folder; no separate download is necessary.
+## Planned changes
+- Rewrite the script in Python
 ## Contact
 
 For support, feedback, questions, or concerns, please reach out to 3m377 on [Discord](https://discord.com).
