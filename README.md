@@ -37,3 +37,7 @@ For support, feedback, questions, or concerns, please reach out to 3m377 on [Dis
 - [README Markdown Editor](https://readme.so/)
 - [AI HUB Discord server](https://discord.com/invite/aihub/)
 - [7-Zip](https://www.7-zip.org)
+## DISCLAIMERS
+Most of this is written with the help of [ChatGPT](https://chat.openai.com/), since I am not experienced enough to write this myself.
+
+I do not own 7-Zip, nor do I claim to own it. I have only added it to the repository so that the script can easily download it.
