@@ -22,7 +22,7 @@ Here is a list of all of my utility scripts, designed to make life easier when i
 
 ### If RVC is not yet installed
 - Make sure you have [Git](https://git-scm.com/downloads) installed. If you don't, the installation will not work.
-- Make sure you have [Python](https://www.python.org/downloads/) installed. RVC will not work if it isn't installed.
+- Make sure you have [Python](https://www.python.org/downloads/) installed, or the installer will not work.
 - Download the [Easy RVC Installer](https://cdn.discordapp.com/attachments/1045962672300109874/1145900000702898176/easy-install-rvc.bat) script and place it in your desired RVC installation folder.
 - Run the script.
 - After some time, you'll be prompted to copy the files from **Mangio-RVC-Fork** to the **RVC-Beta** folder. Please follow the prompt and click ***Replace all files in the destination*** when requested.
