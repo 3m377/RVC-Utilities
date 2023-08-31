@@ -53,11 +53,6 @@ subprocess.run(['install_easyGUI.bat'])
 # Download downloadmodel.bat
 urllib.request.urlretrieve('https://github.com/3m377/RVC-Utilities/raw/main/downloadmodel.bat', 'downloadmodel.bat')
 
-# Download 7za.exe again
-urllib.request.urlretrieve('https://github.com/3m377/RVC-Utilities/raw/main/other/7za.exe', '7za.exe')
-
-subprocess.run(['install_Applio.bat'])
-
 os.chdir('..')
 os.chdir('..')
 os.remove('7za.exe')
