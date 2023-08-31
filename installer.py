@@ -23,16 +23,16 @@ subprocess.run(['7za.exe', 'x', 'RVC-beta.7z', '-oRVC-beta'])
 os.remove('RVC-beta.7z')
 
 # Clone Mangio-RVC-Fork using Git
-subprocess.run(['git', 'clone', 'https://github.com/Mangio621/Mangio-RVC-Fork'])
-shutil.move('Mangio-RVC-Fork', 'RVC-beta')
+subprocess.run(['git', 'clone', 'https://github.com/IAHispano/Applio-RVC-Fork'])
+shutil.move('Applio-RVC-Fork', 'RVC-beta')
 os.chdir('RVC-beta')
 os.rename('RVC-beta0717', 'RVC-beta')
 
-print('Please move all files from the Mangio-RVC-Fork folder to the RVC-beta folder.')
+print('Please move all files from the Applio-RVC-Fork folder to the RVC-beta folder.')
 print('It will tell you "The destination has X files with the same names",')
 print('Just click "Replace the files in the destination".')
 print('DO NOT CLOSE THIS WINDOW, THE INSTALLATION WILL END IF YOU DO')
-print('Once you\'re done copying all of the files, delete the Mangio-RVC-Fork folder and return to this window.')
+print('Once you\'re done copying all of the files, delete the Applio-RVC-Fork folder and return to this window.')
 input('Press Enter to continue...')
 
 # Install python requirements
@@ -55,6 +55,8 @@ urllib.request.urlretrieve('https://github.com/3m377/RVC-Utilities/raw/main/down
 
 # Download 7za.exe again
 urllib.request.urlretrieve('https://github.com/3m377/RVC-Utilities/raw/main/other/7za.exe', '7za.exe')
+
+subprocess.run(['install_Applio.bat'])
 
 os.chdir('..')
 os.chdir('..')
