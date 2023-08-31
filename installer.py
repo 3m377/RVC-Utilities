@@ -32,7 +32,7 @@ print('Please move all files from the Mangio-RVC-Fork folder to the RVC-beta fol
 print('It will tell you "The destination has X files with the same names",')
 print('Just click "Replace the files in the destination".')
 print('DO NOT CLOSE THIS WINDOW, THE INSTALLATION WILL END IF YOU DO')
-print('Once you\'re done copying all of the files, delete the Applio-RVC-Fork folder and return to this window.')
+print('Once you\'re done copying all of the files, delete the Mangio-RVC-Fork folder and return to this window.')
 input('Press Enter to continue...')
 
 # Install python requirements
