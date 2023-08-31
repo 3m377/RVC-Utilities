@@ -9,7 +9,7 @@ vcFileURL = "https://huggingface.co/wok000/vcclient000/resolve/main/MMVCServerSI
 os.system("cls")
 print("WARNING: This may not be updated, it depends if I remember to update the script.")
 print(f"Current version: {vcVersion}")
-input("Press Enter to continue...")
+os.system('pause')
 os.system("cls")
 
 # Download MMVCServerSIO
@@ -27,4 +27,4 @@ os.system("cls")
 # Install finished
 print("Realtime RVC Voice Changer has been installed.")
 print("To use, run \"start_http.bat\"")
-input("Press Enter to exit...")
+os.system('pause')
