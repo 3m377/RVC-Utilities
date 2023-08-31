@@ -23,12 +23,12 @@ subprocess.run(['7za.exe', 'x', 'RVC-beta.7z', '-oRVC-beta'])
 os.remove('RVC-beta.7z')
 
 # Clone Mangio-RVC-Fork using Git
-subprocess.run(['git', 'clone', 'https://github.com/IAHispano/Applio-RVC-Fork'])
-shutil.move('Applio-RVC-Fork', 'RVC-beta')
+subprocess.run(['git', 'clone', 'https://github.com/Mangio621/Mangio-RVC-Fork/'])
+shutil.move('Mangio-RVC-Fork', 'RVC-beta')
 os.chdir('RVC-beta')
 os.rename('RVC-beta0717', 'RVC-beta')
 
-print('Please move all files from the Applio-RVC-Fork folder to the RVC-beta folder.')
+print('Please move all files from the Mangio-RVC-Fork folder to the RVC-beta folder.')
 print('It will tell you "The destination has X files with the same names",')
 print('Just click "Replace the files in the destination".')
 print('DO NOT CLOSE THIS WINDOW, THE INSTALLATION WILL END IF YOU DO')
