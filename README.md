@@ -30,6 +30,7 @@ Here is a list of all of my utility scripts, designed to make life easier when i
 ## Planned changes
 - Update the Python script so it is fully automated
 - Add support for installing Applio-RVC-Fork (and maybe other forks if I find them cool/useful)
+- Add option to install w-okada's voice changer
 - Add config options when installing (should it install EasyGUI, ect)
 ## Contact
 
