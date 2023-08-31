@@ -1,8 +1,56 @@
 @echo off
-:: Download installer.py
-echo Downloading installer.py
-powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/3m377/RVC-Utilities/raw/main/installer.py', 'installer.py')"
+:: Set variables
+setlocal
+set rvcInstallerName=installer.py
+set rvcInstallerURL=https://github.com/3m377/RVC-Utilities/raw/main/installer.py
 
-python installer.py
-del installer.py
-pause
+set vcInstallerName=vcinstaller.py
+set vcInstallerURL=https://github.com/3m377/RVC-Utilities/raw/main/vcinstaller.py
+
+:: Prompt user for installation choice
+:prompt
+echo Select an installation option:
+echo 1. Install RVC (Mangio-RVC-Fork)
+echo 2. Install Realtime RVC Voice Changer
+set /p choice=Enter your choice (1 or 2): 
+
+:: Validate user input
+if "%choice%"=="1" (
+    :: Download installer.py
+    echo Downloading installer.py
+    powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "(New-Object Net.WebClient).DownloadFile('%rvcInstallerURL%', '%rvcInstallerName%')"
+
+    python %rvcInstallerName%
+    del %rvcInstallerName%
+    pause
+) else if "%choice%"=="2" (
+    :: Download VC installer script
+    echo Downloading %vcInstallerName%
+    powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "(New-Object Net.WebClient).DownloadFile('%vcInstallerURL%', '%vcInstallerName%')"
+
+    :: Check if download was successful
+    if not exist %vcInstallerName% (
+        echo Failed to download %vcInstallerName%
+        pause
+        exit /b 1
+    )
+
+    :: Run installer script
+    python %vcInstallerName%
+
+    :: Check if Python script execution was successful
+    if %errorlevel% neq 0 (
+        echo %vcInstallerName% encountered an error
+        pause
+        exit /b %errorlevel%
+    )
+
+    :: Delete installer script
+    del %vcInstallerName% /f
+) else (
+    echo Invalid choice
+    pause
+    cls
+    goto prompt
+    exit /b 1
+)
