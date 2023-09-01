@@ -31,7 +31,6 @@ Here is a list of all of my utility scripts, designed to make life easier when i
 - The Model Downloader will be automatically downloaded and placed in the appropriate folder; no separate download is necessary.
 ## Planned changes
 - Update the Python script so it is fully automated
-- Add support for installing Applio-RVC-Fork (and maybe other forks if I find them cool/useful)
 ## Contact
 
 For support, feedback, questions, or concerns, please reach out to 3m377 on [Discord](https://discord.com).
