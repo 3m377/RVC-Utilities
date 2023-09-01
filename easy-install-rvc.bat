@@ -7,6 +7,15 @@ set rvcInstallerURL=https://github.com/3m377/RVC-Utilities/raw/main/installer.py
 set vcInstallerName=vcinstaller.py
 set vcInstallerURL=https://github.com/3m377/RVC-Utilities/raw/main/vcinstaller.py
 
+set currentVer=1.0.0
+set updateCheckURL=https://github.com/3m377/RVC-Utilities/raw/main/version
+set updateCheckName=update.txt
+
+set scriptURL=https://github.com/3m377/RVC-Utilities/raw/main/easy-install-rvc.bat
+set scriptName=easy-install-rvc.bat
+
+goto checkupdate
+
 :: Prompt user for installation choice
 :prompt
 echo Select an installation option:
@@ -53,3 +62,27 @@ if "%choice%"=="1" (
     goto prompt
     exit /b 1
 )
+goto end
+
+:checkupdate
+:: Download update.txt
+powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "(New-Object Net.WebClient).DownloadFile('%updateCheckURL%', '%updateCheckName%')"
+
+:: Check for updates
+FOR /F "tokens=* delims=" %%x in (%updateCheckName%) DO set actualVer=%%x
+del "%updateCheckName%"
+
+:: If there is an update, download it
+if %currentVer% == %actualVer% (
+    echo Version matches with most recent version.
+    goto prompt
+) else (
+    echo Version does not match up with latest version.
+    echo Downloading latest version...
+    powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "(New-Object Net.WebClient).DownloadFile('%scriptURL%', '%scriptName%')"
+    echo Please restart the script.
+    pause
+)
+
+:end
+echo Ending script...
