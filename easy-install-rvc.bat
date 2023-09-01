@@ -22,7 +22,6 @@ if "%choice%"=="1" (
 
     python %rvcInstallerName%
     del %rvcInstallerName%
-    pause
 ) else if "%choice%"=="2" (
     :: Download VC installer script
     echo Downloading %vcInstallerName%
