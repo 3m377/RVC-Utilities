@@ -27,11 +27,11 @@ Here is a list of all of my utility scripts, designed to make life easier when i
 - Run the script.
 - When prompted, type 1 to install RVC with Mangio-RVC-Fork.
 - After some time, you'll be prompted to copy the files from **Mangio-RVC-Fork** to the **RVC-Beta** folder. Please follow the prompt and click ***Replace all files in the destination*** when requested.
+- If you would like to, type "y" when prompted to install EasyGUI.
 - The Model Downloader will be automatically downloaded and placed in the appropriate folder; no separate download is necessary.
 ## Planned changes
 - Update the Python script so it is fully automated
 - Add support for installing Applio-RVC-Fork (and maybe other forks if I find them cool/useful)
-- Add config options when installing (should it install EasyGUI, ect)
 ## Contact
 
 For support, feedback, questions, or concerns, please reach out to 3m377 on [Discord](https://discord.com).
