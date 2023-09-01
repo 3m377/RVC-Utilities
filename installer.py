@@ -41,21 +41,29 @@ subprocess.run(['pip', 'install', '-r', 'requirements.txt'])
 subprocess.run(['pip', 'install', '-r', 'requirements-win-for-realtime_vc_gui.txt'])
 os.chdir('..')
 
-# Download easyGUI_local_installer.zip
-urllib.request.urlretrieve('https://github.com/kalomaze/Mangio-Kalo-Tweaks/releases/download/v3.3/easyGUI_local_installer.zip', 'easyGUI_local_installer.zip')
+# Check if user wants to install EasyGUI
+print("Would you like to also install EasyGUI? (y)")
+input("If not, just press enter: ")
 
-shutil.unpack_archive('easyGUI_local_installer.zip', 'RVC-beta')
-os.remove('easyGUI_local_installer.zip')
-os.chdir('RVC-beta')
+if input == "y": 
+    # Download easyGUI_local_installer.zip
+    urllib.request.urlretrieve('https://github.com/kalomaze/Mangio-Kalo-Tweaks/releases/download/v3.3/easyGUI_local_installer.zip', 'easyGUI_local_installer.zip')
 
-subprocess.run(['install_easyGUI.bat'])
+    # Extract easyGUI_local_installer.zip
+    shutil.unpack_archive('easyGUI_local_installer.zip', 'RVC-beta')
+    os.remove('easyGUI_local_installer.zip')
+    os.chdir('RVC-beta')
+
+    # Run install_easyGUI.bat
+    subprocess.run(['install_easyGUI.bat'])
 
 # Download downloadmodel.bat
 urllib.request.urlretrieve('https://github.com/3m377/RVC-Utilities/raw/main/downloadmodel.bat', 'downloadmodel.bat')
 
+# Remove 7za.exe
 os.chdir('..')
 os.chdir('..')
 os.remove('7za.exe')
 
-print('Successfully install RVC-beta and EasyGUI')
+# Pause for user review
 os.system('pause')
