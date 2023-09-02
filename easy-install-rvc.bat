@@ -1,13 +1,10 @@
 @echo off
 :: Set variables
 setlocal
-set rvcInstallerName=installer.py
-set rvcInstallerURL=https://github.com/3m377/RVC-Utilities/raw/main/installer.py
+set installerName=install.py
+set installerURL=https://github.com/3m377/RVC-Utilities/raw/main/install.py
 
-set vcInstallerName=vcinstaller.py
-set vcInstallerURL=https://github.com/3m377/RVC-Utilities/raw/main/vcinstaller.py
-
-set currentVer=1.0.1
+set currentVer=1.0.2
 set updateCheckURL=https://github.com/3m377/RVC-Utilities/raw/main/version
 set updateCheckName=update.txt
 
@@ -30,34 +27,24 @@ set /p choice=Enter your choice (1-5):
 if "%choice%"=="1" (
     :: Download installer.py
     echo Downloading installer.py
-    powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "(New-Object Net.WebClient).DownloadFile('%rvcInstallerURL%', '%rvcInstallerName%')"
+    powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "(New-Object Net.WebClient).DownloadFile('%installerURL%', '%installerName%')"
 
-    python %rvcInstallerName%
-    del %rvcInstallerName%
+    python %installerName% --install-mangio-rvc
+
+    del %installerName%
 ) else if "%choice%"=="2" (
     :: Download VC installer script
-    echo Downloading %vcInstallerName%
-    powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "(New-Object Net.WebClient).DownloadFile('%vcInstallerURL%', '%vcInstallerName%')"
+    echo Downloading %installerName%
+    powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "(New-Object Net.WebClient).DownloadFile('%installerURL%', '%installerName%')"
+    echo Successfully downloaded %installerName%.
 
-    :: Check if download was successful
-    if not exist %vcInstallerName% (
-        echo Failed to download %vcInstallerName%
-        pause
-        exit /b 1
-    )
+    cls
 
     :: Run installer script
-    python %vcInstallerName%
-
-    :: Check if Python script execution was successful
-    if %errorlevel% neq 0 (
-        echo %vcInstallerName% encountered an error
-        pause
-        exit /b %errorlevel%
-    )
+    python %installerName% --install-realtime-vc
 
     :: Delete installer script
-    del %vcInstallerName% /f
+    del %installerName% /f
 ) else if "%choice%"=="3" (
     :: Check for updates
     goto checkupdate
