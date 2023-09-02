@@ -46,7 +46,6 @@ Here is a list of all of my utility scripts, designed to make life easier when i
 ## Planned changes
 - Update the Python script so it is fully automated
 - Add a progressbar to the model downloader script to show the model's download progress
-- Fix weird bug where it refuses access to the Mangio-RVC-Fork folder (IMPORTANT)
 ## Contact
 
 For support, feedback, questions, or concerns, please reach out to 3m377 on [Discord](https://discord.com).
