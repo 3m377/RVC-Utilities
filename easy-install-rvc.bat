@@ -26,7 +26,7 @@ set /p choice=Enter your choice (1-5):
 :: Validate user input
 if "%choice%"=="1" (
     :: Check if tqdm and requests have been installed with pip
-    if exist config.txt (
+    if not exist config.txt (
         :: Ensure user has tqdm and requests installed with pip
         pip install tqdm
         pip install requests
@@ -35,16 +35,23 @@ if "%choice%"=="1" (
         echo Config file generated at %date% %time% > config.txt
     )
     
-    :: Download installer.py
-    echo Downloading installer.py
+    :: Download install.py
+    echo Downloading %installerName%
     powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "(New-Object Net.WebClient).DownloadFile('%installerURL%', '%installerName%')"
+    echo Successfully downloaded %installerName%
+
+    echo WARNING: DO NOT CLOSE THIS WINDOW.
+    echo DO NOT INTERACT WITH THIS WINDOW UNTIL THE SCRIPT SAYS THE INSTALLATION IS DONE.
+    echo IF YOU DO, THE INSTALLATION WILL END PREMATURELY.
 
     python %installerName% --install-mangio-rvc
+
+    pause
 
     del %installerName%
 ) else if "%choice%"=="2" (
     :: Check if tqdm and requests have been installed with pip
-    if exist config.txt (
+    if not exist config.txt (
         :: Ensure user has tqdm and requests installed with pip
         pip install tqdm
         pip install requests
@@ -60,8 +67,14 @@ if "%choice%"=="1" (
 
     cls
 
+    echo WARNING: DO NOT CLOSE THIS WINDOW.
+    echo DO NOT INTERACT WITH THIS WINDOW UNTIL THE SCRIPT SAYS THE INSTALLATION IS DONE.
+    echo IF YOU DO, THE INSTALLATION WILL END PREMATURELY.
+
     :: Run installer script
     python %installerName% --install-realtime-vc
+    
+    pause
 
     :: Delete installer script
     del %installerName% /f
