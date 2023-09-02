@@ -1,9 +1,26 @@
 import os
 import subprocess
+import requests
 import urllib.request
 import shutil
 import argparse
-import argparse
+from tqdm import tqdm
+
+def download_with_progress(url, filename):
+    response = requests.get(url, stream=True)
+    total_size = int(response.headers.get('content-length', 0))
+
+    with open(filename, 'wb') as file, tqdm(
+        desc=filename,
+        total=total_size,
+        unit='B',
+        unit_scale=True,
+        unit_divisor=1024,
+        miniters=1,
+    ) as bar:
+        for data in response.iter_content(chunk_size=1024):
+            file.write(data)
+            bar.update(len(data))
 
 def install_rvc():
     # Set GIT_SSH_COMMAND
@@ -18,7 +35,7 @@ def install_rvc():
     print('This will take a while depending on your internet speed, so please be patient.')
 
     # Download RVC-beta.7z
-    urllib.request.urlretrieve('https://huggingface.co/lj1995/VoiceConversionWebUI/resolve/main/RVC-beta.7z', 'RVC-beta.7z')
+    download_with_progress('https://huggingface.co/lj1995/VoiceConversionWebUI/resolve/main/RVC-beta.7z', 'RVC-beta.7z')
     print('Downloaded RVC-beta.7z')
 
     print('Extracting RVC-beta.7z using 7za.exe')
@@ -27,6 +44,10 @@ def install_rvc():
 
     # Clone Mangio-RVC-Fork using Git
     subprocess.run(['git', 'clone', 'https://github.com/Mangio621/Mangio-RVC-Fork/'])
+    shutil.move('Mangio-RVC-Fork', 'RVC-beta')
+    os.chdir('RVC-beta')
+    os.rename('RVC-beta0717', 'RVC-beta')
+
     shutil.move('Mangio-RVC-Fork', 'RVC-beta')
     os.chdir('RVC-beta')
     os.rename('RVC-beta0717', 'RVC-beta')
@@ -88,7 +109,7 @@ def install_vc():
     # Download MMVCServerSIO
     print(f"Downloading {vcFileName}")
     print("This may take some time depending on your internet speed.")
-    urllib.request.urlretrieve(vcFileURL, vcFileName)
+    download_with_progress(vcFileURL, vcFileName)
     os.system("cls")
 
     # Extract MMVCServerSIO
