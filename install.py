@@ -3,8 +3,26 @@ import subprocess
 import requests
 import urllib.request
 import shutil
+import sys
+import ctypes
 import argparse
 from tqdm import tqdm
+
+# Check if script is running with admin priveledges
+def is_admin():
+    try:
+        return ctypes.windll.shell32.IsUserAnAdmin()
+    except:
+        return False
+
+# Define function to run script with admin priveledges
+def run_as_admin():
+    if is_admin():
+        return
+    ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, " ".join(sys.argv), None, 1)
+    sys.exit()
+
+run_as_admin()
 
 def download_with_progress(url, filename):
     response = requests.get(url, stream=True)
@@ -44,20 +62,31 @@ def install_rvc():
 
     # Clone Mangio-RVC-Fork using Git
     subprocess.run(['git', 'clone', 'https://github.com/Mangio621/Mangio-RVC-Fork/'])
-    shutil.move('Mangio-RVC-Fork', 'RVC-beta')
+    try:
+        shutil.move('Mangio-RVC-Fork', 'RVC-beta')
+    except PermissionError:
+        # If permission denied, try to run the script with elevated privileges (as administrator)
+        print("Moving files requires administrator privileges. Please enter your admin password.")
+        subprocess.run(['runas', '/user:Administrator', 'python', sys.argv[0]])
     os.chdir('RVC-beta')
     os.rename('RVC-beta0717', 'RVC-beta')
 
-    shutil.move('Mangio-RVC-Fork', 'RVC-beta')
-    os.chdir('RVC-beta')
-    os.rename('RVC-beta0717', 'RVC-beta')
+    # Copy the entire contents of Mangio-RVC-Fork to RVC-Beta
+    src_folder = 'Mangio-RVC-Fork'
+    dst_folder = 'RVC-Beta'
 
-    print('Please move all files from the Mangio-RVC-Fork folder to the RVC-beta folder.')
-    print('It will tell you "The destination has X files with the same names",')
-    print('Just click "Replace the files in the destination".')
-    print('DO NOT CLOSE THIS WINDOW, THE INSTALLATION WILL END IF YOU DO')
-    print('Once you\'re done copying all of the files, delete the Applio-RVC-Fork folder and return to this window.')
-    os.system('pause')
+    shutil.copytree(src_folder, dst_folder, dirs_exist_ok=True)
+
+    # Delete the Mangio-RVC-Fork folder including hidden files and folders
+    for root, dirs, files in os.walk(src_folder):
+        for file in files:
+            file_path = os.path.join(root, file)
+            os.chmod(file_path, 0o777)  # Ensure files have write permissions
+        for dir in dirs:
+            dir_path = os.path.join(root, dir)
+            os.chmod(dir_path, 0o777)  # Ensure directories have write permissions
+
+    shutil.rmtree(src_folder)
 
     # Install python requirements
     os.chdir('RVC-beta')
@@ -83,9 +112,6 @@ def install_rvc():
     os.chdir('..')
     os.chdir('..')
     os.remove('7za.exe')
-
-    # Pause for user review
-    os.system('pause')
 
 def install_vc():
     vcVersion = "1.5.3.13"
