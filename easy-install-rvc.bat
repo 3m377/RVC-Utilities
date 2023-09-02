@@ -4,7 +4,7 @@ setlocal
 set installerName=install.py
 set installerURL=https://github.com/3m377/RVC-Utilities/raw/main/install.py
 
-set currentVer=1.0.2
+set currentVer=1.0.3
 set updateCheckURL=https://github.com/3m377/RVC-Utilities/raw/main/version
 set updateCheckName=update.txt
 
@@ -25,6 +25,9 @@ set /p choice=Enter your choice (1-5):
 
 :: Validate user input
 if "%choice%"=="1" (
+    :: Check if tqdm and requests have been installed with pip
+    goto checkconfig
+    
     :: Download installer.py
     echo Downloading installer.py
     powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "(New-Object Net.WebClient).DownloadFile('%installerURL%', '%installerName%')"
@@ -33,6 +36,9 @@ if "%choice%"=="1" (
 
     del %installerName%
 ) else if "%choice%"=="2" (
+    :: Check if tqdm and requests have been installed with pip
+    goto checkconfig
+    
     :: Download VC installer script
     echo Downloading %installerName%
     powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "(New-Object Net.WebClient).DownloadFile('%installerURL%', '%installerName%')"
@@ -111,3 +117,14 @@ echo 7-Zip created by Igor Pavlov
 pause
 cls
 goto prompt
+
+:checkconfig
+:: Check if the config file exists
+if not exist config.txt (
+    :: Ensure user has tqdm and requests installed with pip
+    pip install tqdm
+    pip install requests
+    
+    :: Create the config file
+    echo Config file generated at %date% %time% > config.txt
+)
