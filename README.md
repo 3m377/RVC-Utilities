@@ -26,13 +26,13 @@ Here is a list of all of my utility scripts, designed to make life easier when i
 - Download the [Easy RVC Installer](https://github.com/3m377/RVC-Utilities/releases/download/1.0.3/easy-install-rvc.bat) script and place it in your desired RVC installation folder.
 - Run the script.
 - When prompted, type 1 to install RVC with Mangio-RVC-Fork.
-- After some time, you'll be prompted to copy the files from **Mangio-RVC-Fork** to the **RVC-Beta** folder. Please follow the prompt and click ***Replace all files in the destination*** when requested.
-- If you would like to, type "y" when prompted to install EasyGUI.
+- Allow it to make changes to your device (It's not a virus, you can look through the very simple code.)
 - The Model Downloader will be automatically downloaded and placed in the appropriate folder; no separate download is necessary.
 ## Changelog
 **1.0.3**
 - Added progress bars to the installer to show progress of large file downloads.
 - Added a check that makes sure `config.txt` exists. If it doesn't it will install tqdm and requests with pip, and then create `config.txt`. This is to ensure the install script will run without errors caused by the user not having tqdm or requests installed.
+- Automated the process of moving the files from Mangio-RVC-Fork to RVC-beta and replacing any that already exist.
 - Started logging changes in the changelog.
 
 **1.0.2**
@@ -46,6 +46,7 @@ Here is a list of all of my utility scripts, designed to make life easier when i
 ## Planned changes
 - Update the Python script so it is fully automated
 - Add a progressbar to the model downloader script to show the model's download progress
+- Fix weird bug where it refuses access to the Mangio-RVC-Fork folder (IMPORTANT)
 ## Contact
 
 For support, feedback, questions, or concerns, please reach out to 3m377 on [Discord](https://discord.com).
