@@ -26,7 +26,14 @@ set /p choice=Enter your choice (1-5):
 :: Validate user input
 if "%choice%"=="1" (
     :: Check if tqdm and requests have been installed with pip
-    goto checkconfig
+    if exist config.txt (
+        :: Ensure user has tqdm and requests installed with pip
+        pip install tqdm
+        pip install requests
+    
+        :: Create the config file
+        echo Config file generated at %date% %time% > config.txt
+    )
     
     :: Download installer.py
     echo Downloading installer.py
@@ -37,7 +44,14 @@ if "%choice%"=="1" (
     del %installerName%
 ) else if "%choice%"=="2" (
     :: Check if tqdm and requests have been installed with pip
-    goto checkconfig
+    if exist config.txt (
+        :: Ensure user has tqdm and requests installed with pip
+        pip install tqdm
+        pip install requests
+    
+        :: Create the config file
+        echo Config file generated at %date% %time% > config.txt
+    )
     
     :: Download VC installer script
     echo Downloading %installerName%
@@ -117,14 +131,3 @@ echo 7-Zip created by Igor Pavlov
 pause
 cls
 goto prompt
-
-:checkconfig
-:: Check if the config file exists
-if not exist config.txt (
-    :: Ensure user has tqdm and requests installed with pip
-    pip install tqdm
-    pip install requests
-    
-    :: Create the config file
-    echo Config file generated at %date% %time% > config.txt
-)
