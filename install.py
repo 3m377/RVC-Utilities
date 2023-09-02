@@ -1,3 +1,4 @@
+import atexit
 import os
 import subprocess
 import requests
@@ -77,17 +78,6 @@ def install_rvc():
 
     shutil.copytree(src_folder, dst_folder, dirs_exist_ok=True)
 
-    # Delete the Mangio-RVC-Fork folder including hidden files and folders
-    for root, dirs, files in os.walk(src_folder):
-        for file in files:
-            file_path = os.path.join(root, file)
-            os.chmod(file_path, 0o777)  # Ensure files have write permissions
-        for dir in dirs:
-            dir_path = os.path.join(root, dir)
-            os.chmod(dir_path, 0o777)  # Ensure directories have write permissions
-
-    shutil.rmtree(src_folder)
-
     # Install python requirements
     os.chdir('RVC-beta')
     subprocess.run(['pip', 'install', '-r', 'requirements.txt'])
@@ -112,6 +102,10 @@ def install_rvc():
     os.chdir('..')
     os.chdir('..')
     os.remove('7za.exe')
+
+    print('Installation completed.')
+    print('Please manually delete the "Mangio-RVC-Fork" folder.')
+    os.system('pause')
 
 def install_vc():
     vcVersion = "1.5.3.13"
